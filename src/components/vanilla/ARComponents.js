@@ -6,7 +6,7 @@ const ARComponents = ({ idEscena }) => {
     const [modelDetails, setModelDetails] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://192.168.1.70:2023/api/EscenaObjeto?id_escena=1`)
+        axios.get(`https://backend-prueba2.vercel.app//api/EscenaObjeto?id_escena=1`)
             .then(response => {
                 const data = response.data;
                 setModelDetails(data.map(item => ({
