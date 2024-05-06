@@ -125,7 +125,6 @@ class ARExperience {
     setActiveObject(index) {
         if (index >= 0 && index < this.models.length) {
             this.activeObject = this.models[index];
-            // Optionally, add visual or audio feedback here
             console.log(`Active object changed to index: ${index}`);
         }
     }
@@ -162,13 +161,15 @@ class ARExperience {
         const beamLength = 2.5; //length of the beam
         const beamDirection = new THREE.Vector3(0, 0, -1); //The beam extends in the negative z-axis
         //Gets the position from the controller's world matrix
-        const position = new THREE.Vector3().setFromMatrixPosition(controller.matrixWorld); //quizas tenga que quitar despues de vector3
+        const position = new THREE.Vector3().setFromMatrixPosition(controller.matrixWorld);
         //Transforms the direction of the beam by the controller's world rotation
         beamDirection.transformDirection(controller.matrixWorld);
         //Calculates the end position of the beam
         const endPosition = position.add(beamDirection.multiplyScalar(beamLength));
         if (this.activeObject) {
             this.activeObject.position.copy(endPosition);
+            this.updateObjectInDatabase(); // Trigger database update after position change
+
         }
     }
     initControllers() {
@@ -241,6 +242,7 @@ class ARExperience {
     scaleModel(scaleFactor) {
         if (this.activeObject) {
             this.activeObject.scale.multiplyScalar(scaleFactor);
+            this.updateObjectInDatabase(); //handle the update
         }
     }
     
@@ -300,6 +302,20 @@ class ARExperience {
             });
         });
     }
+    updateObjectInDatabase() {
+        const position = `${this.activeObject.position.x},${this.activeObject.position.y},${this.activeObject.position.z}`;
+        const scale = `${this.activeObject.scale.x},${this.activeObject.scale.y},${this.activeObject.scale.z}`;
+    
+        axios.put(`https://backend-prueba2.vercel.app/api/EscenaObjeto/${this.activeObject.id_escenaObjeto}`, {
+            posicion: position,
+            escala: scale,
+            id_objeto: this.activeObject.id, // This should match the database ID
+            id_escena: 1 // Assuming there's a fixed scene; otherwise, this should be dynamically determined
+        })
+        .then(response => console.log('Update successful:', response))
+        .catch(error => console.error('Error updating object:', error));
+    }
+    
     
     initScene() {
         document.querySelector(".container3D").appendChild(this.container);
