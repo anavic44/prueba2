@@ -1,0 +1,111 @@
+/* File path: /src/components/Login.css */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #131313; /* This should be close to the dark background in your image */
+  }
+  
+  .login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .login-form {
+    background: rgba(255, 255, 255, 0.1); /* For the glass effect */
+    backdrop-filter: blur(10px); /* For the glass effect */
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Slight border for glass effect */
+    z-index: 10;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  h1, h2 {
+    color: #fff;
+    text-align: center;
+  }
+  
+  h1 {
+    margin-bottom: 10px;
+  }
+  
+  h2 {
+    margin-bottom: 30px;
+    font-weight: normal;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2); /* Slightly lighter input background for contrast */
+    color: #fff;
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: #08f; /* Vibrant login button color */
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-button:hover {
+    background-color: #06c; /* Slightly darker on hover */
+  }
+  
+  .links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+  
+  .links a {
+    color: #8ab4f8; /* Link color */
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .links a:hover {
+    text-decoration: underline;
+  }
+  
+  .login-illustration {
+    display: none; /* Hide the illustration on small screens */
+  }
+  
+  /* Media queries for responsive design */
+  @media (min-width: 768px) {
+    .login-container {
+      justify-content: space-around;
+    }
+  
+    .login-illustration {
+      display: block;
+      /* Here you'll include your illustration either as an img tag in the HTML, or as a background-image in CSS */
+    }
+  }
+
+  label {
+    color: white; /* Cambia el color del texto a blanco */
+  }
+  
+  
+  /* Additional media queries for larger screens can be added to adjust the layout */
+  
