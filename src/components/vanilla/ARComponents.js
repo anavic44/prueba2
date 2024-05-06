@@ -12,7 +12,8 @@ const ARComponents = ({ idEscena }) => {
                 setModelDetails(data.map(item => ({
                     objPath: item.objUrl,
                     mtlPath: item.mtlUrl,
-                    // Include other data as needed
+                    userId: item.id_usuario,
+                    name: item.titulo,
                 })));
             })
             .catch(error => {

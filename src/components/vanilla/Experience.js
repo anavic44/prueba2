@@ -6,7 +6,7 @@ import { OBJLoader } from 'three/examples/jsm/Addons.js';
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
-
+import axios from 'axios';
 
 class ARExperience {
     constructor(modelDetails) {
@@ -83,7 +83,7 @@ class ARExperience {
         models.forEach((model, idx) => {
             const posX = startX + idx * buttonSpacing; // Calculate X-coordinate for each button
             const pos = new THREE.Vector3(posX, buttonY, buttonZ);
-            this.createButton(`Object ${idx + 1}`, idx, pos, scene, model);
+            this.createButton(model.name, idx, pos, scene, model);
         });
     }
     initVRControls(controllers, scene, camera, models) {
