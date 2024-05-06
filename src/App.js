@@ -1,15 +1,17 @@
 
 import ARComponents from "./components/vanilla/ARComponents";
+import { Projects2 } from "./RegisterScene";
 import React from 'react';
 
 function App() {
   return (
     <div>
-      <ARComponents />
+      < RegisterScene/>
     </div>
   );
 }
 export default App;
+//      <ARComponents />
 
 
 /*
