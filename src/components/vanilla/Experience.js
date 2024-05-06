@@ -83,7 +83,7 @@ class ARExperience {
         models.forEach((model, idx) => {
             const posX = startX + idx * buttonSpacing; // Calculate X-coordinate for each button
             const pos = new THREE.Vector3(posX, buttonY, buttonZ);
-            this.createButton(model.name, idx, pos, scene, model);
+            this.createButton(name, idx, pos, scene, model);
         });
     }
     initVRControls(controllers, scene, camera, models) {
